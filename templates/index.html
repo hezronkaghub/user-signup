@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+    <head>
+        <style>
+            label { display:block;
+                    margin: 5px;
+                  }
+            .error { color: red;
+                  }
+        </style>
+    </head>
+    <body>        
+        <form method='POST'>
+            <p class="error">{{blank_field_error}}</p>
+            <label>User Name:
+                <input name="user_name" type="text" value='{{user_name}}'>
+                <p class="error">{{username_error}}</p>
+            </label>
+            <label>Password
+                <input name="password" type="password" value='{{password}}' />
+                <p class="error">{{password_error}}</p>
+            </label>
+            <label>Retype Password
+                <input name="password2" type="password" value='{{password2}}' />
+                <p class="error">{{password2_error}}</p>
+            </label>
+            <label>
+                <input type="submit">
+            </label>
+        </form>
+    </body>
+
+</html>

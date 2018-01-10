@@ -70,7 +70,7 @@ def validate_inputs():
     else:
         template = jinja_env.get_template('index.html')
         return template.render(blank_field_error=blank_field_error,password_error=password_error,password2_error=password2_error,
-               username_error=username_error,user_name=user_name,password=password,password2=password2,email_error=email_error)
+               username_error=username_error,user_name=user_name,password=password,password2=password2,email=email,email_error=email_error)
 
 @app.route('/welcome')
 def welcome():

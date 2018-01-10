@@ -58,8 +58,6 @@ def validate_inputs():
      
     if ('@' not in email or '.' not in email) and len(email) > 0:
         email_error = 'Not a valid email address'
-        password = ''
-        password2 = ''
         email = ''
     else:
         if len(email) > 0 and (len(email) > 20 or len(email) < 3):

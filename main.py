@@ -21,10 +21,12 @@ def validate_inputs():
     user_name = request.form['user_name']
     password = request.form['password']
     password2 = request.form['password2']
+    email = request.form['email']
 
     username_error = ''
     password_error = ''
     password2_error = ''
+    email_error = ''
     blank_field_error = ''
 
     
@@ -53,13 +55,22 @@ def validate_inputs():
         blank_field_error = 'Please complete form'
         password = ''
         password2 = ''
-    
-    if not username_error and not password_error and not password2_error:
+     
+    if ('@' not in email or '.' not in email) and len(email) > 0:
+        email_error = 'Not a valid email address'
+        password = ''
+        password2 = ''
+        email = ''
+    else:
+        if len(email) > 0 and (len(email) > 20 or len(email) < 3):
+            email_error = 'Email length must be between (3-20) characters'
+
+    if not username_error and not password_error and not password2_error and not email_error:
         return redirect('/welcome?user_name={0}'.format(user_name))
     else:
         template = jinja_env.get_template('index.html')
         return template.render(blank_field_error=blank_field_error,password_error=password_error,password2_error=password2_error,
-               username_error=username_error,user_name=user_name,password=password,password2=password2)
+               username_error=username_error,user_name=user_name,password=password,password2=password2,email_error=email_error)
 
 @app.route('/welcome')
 def welcome():
